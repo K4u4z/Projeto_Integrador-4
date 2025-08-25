@@ -1,7 +1,6 @@
 package br.senac.Faculdade.Entidade;
 
 import jakarta.persistence.*;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
