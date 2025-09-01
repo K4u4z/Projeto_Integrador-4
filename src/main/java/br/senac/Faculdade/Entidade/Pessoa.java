@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity(name = "Pessoa")
 public class Pessoa implements Serializable {
@@ -24,12 +25,12 @@ public class Pessoa implements Serializable {
     String cpf;
 
     @Column(name = "dataNascimento")
-    LocalDateTime dataNascimento;
+    Date dataNascimento;
 
     public Pessoa() {
     }
 
-    public Pessoa(String nome, String email, String cpf, LocalDateTime dataNascimento) {
+    public Pessoa(String nome, String email, String cpf, Date dataNascimento) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -70,11 +71,11 @@ public class Pessoa implements Serializable {
         this.cpf = cpf;
     }
 
-    public LocalDateTime getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(LocalDateTime dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

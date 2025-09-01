@@ -3,6 +3,7 @@ package br.senac.Faculdade.Entidade;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity (name = "Alunos")
 public class Aluno implements Serializable {
@@ -16,17 +17,32 @@ public class Aluno implements Serializable {
     String nome;
 
     @Column(name ="Data de cadastro")
-    LocalDateTime dataCadastro;
+    Date dataCadastro;
 
 
     public Aluno() {
     }
 
-    public Aluno(String nome, LocalDateTime dataCadastro) {
+    public Aluno(String nome, Date dataCadastro, boolean ativo) {
+        super();
         this.ra = ra;
         this.nome = nome;
         this.dataCadastro = dataCadastro;
+        this.ativo = ativo;
+
     }
+    public Boolean isAtivo(){
+        return ativo;
+    }
+
+
+    public void setAtivo(boolean ativo){
+        this.ativo = ativo;
+    }
+
+
+    @Column (name = "ativo")
+    private boolean ativo;
 
 
     public int getRa() {
@@ -45,13 +61,14 @@ public class Aluno implements Serializable {
         this.nome = nome;
     }
 
-    public LocalDateTime getDataCadastro() {
+    public Date getDataCadastro() {
         return dataCadastro;
     }
 
-    public void setDataCadastro(LocalDateTime dataCadastro) {
+    public void setDataCadastro(Date dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
+
 
     @Override
     public String toString() {

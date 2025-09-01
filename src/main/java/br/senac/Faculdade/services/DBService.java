@@ -9,9 +9,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Date;
 
 @Service
 public class DBService {
@@ -22,20 +25,14 @@ public class DBService {
     private PessoaRepository pessoaRepository;
 
 @Bean
-public String instaciarDB() {
-    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-    Aluno aluno1 = new Aluno("Kauã Diodato",
-            LocalDateTime.parse("01/08/2003 08:22", formato));
-    alunoRepository.saveAll(Arrays.asList(aluno1));
-
-    Aluno aluno2 = new Aluno("Kauã Diodato3",
-            LocalDateTime.parse("01/08/2003 08:22", formato));
-    alunoRepository.saveAll(Arrays.asList(aluno2));
+public String instaciarDB() throws ParseException {
+    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+    Aluno aluno1 = new Aluno("Kauã Diodato", formato.parse("01/02/2020"),true);
+    Aluno aluno2 = new Aluno("Kauã Diodato2", formato.parse("01/02/2021"),true);
+    alunoRepository.saveAll(Arrays.asList(aluno1,aluno2));
 
 
-    Pessoa pessoa1 = new Pessoa("Kauã Diodato3","kauadiodato@outlook.com","321222123",
-            LocalDateTime.parse("01/08/2003 08:22", formato));
-    pessoaRepository.saveAll(Arrays.asList(pessoa1));
+
 
         return "";
 }}
