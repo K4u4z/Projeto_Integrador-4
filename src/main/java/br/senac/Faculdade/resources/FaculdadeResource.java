@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 
 
 @RestController
@@ -25,5 +26,16 @@ public class FaculdadeResource {
       Aluno aluno = faculdadeService.findById(ra);
       return ResponseEntity.ok().body(aluno);
     }
+
+    //Pesquisa todos alunos ativos
+    @GetMapping(value = "/abertos")
+    public ResponseEntity<List<Aluno>> listarAbertos(){
+        List <Aluno> alunos =
+                faculdadeService.listarTodosAbertos();
+        return ResponseEntity.ok().body(alunos);
+    }
+
+
+
 
 }

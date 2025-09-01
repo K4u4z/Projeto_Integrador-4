@@ -5,6 +5,7 @@ import br.senac.Faculdade.repositories.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,5 +15,14 @@ public class FaculdadeService {
 public Aluno findById(Integer ra){
     Optional<Aluno> aluno = alunoRepository.findById(ra);
     return aluno.orElse(null);
+
+
 }
+
+    public List<Aluno> listarTodosAbertos() {
+        List<Aluno> alunos = alunoRepository.listarTodosAbertos();
+        return alunos;
+    }
+
+
 }
